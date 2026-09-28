@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Container User-Agent",
   "version": "1.0.0",
-  "description": "Sends a Chrome User-Agent header in the containers you choose. Toggle from the toolbar.",
+  "description": "Sends a User-Agent header in the containers you choose. Toggle from the toolbar.",
   "browser_specific_settings": {
     "gecko": {
       "id": "container-user-agent@oskarkook",
