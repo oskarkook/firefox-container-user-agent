@@ -8,7 +8,7 @@ const PLATFORMS = {
   linux: "X11; Linux x86_64",
 };
 
-// Read by the options page (via getBackgroundPage) to show as a placeholder.
+// Read by the options page (via getBackgroundPage) to pre-fill the field.
 var defaultUserAgent = null;
 let customUserAgent = "";
 // Cookie store IDs ("firefox-default", "firefox-container-1", ...) to rewrite the header in.

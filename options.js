@@ -1,4 +1,6 @@
 const textarea = document.getElementById("ua");
+const resetButton = document.getElementById("reset");
+let defaultUserAgent = "";
 const containerList = document.getElementById("containers");
 
 async function renderContainers() {
@@ -39,14 +41,21 @@ async function setEnabled(cookieStoreId, enabled) {
 
 (async () => {
   const background = await browser.runtime.getBackgroundPage();
-  textarea.placeholder = background.defaultUserAgent;
+  defaultUserAgent = background.defaultUserAgent;
   const { userAgent } = await browser.storage.local.get({ userAgent: "" });
-  textarea.value = userAgent;
+  textarea.value = userAgent || defaultUserAgent;
   renderContainers();
 })();
 
 textarea.addEventListener("input", () => {
-  browser.storage.local.set({ userAgent: textarea.value.trim() });
+  // Store the default as empty, so it keeps tracking CHROME_VERSION bumps.
+  const userAgent = textarea.value.trim();
+  browser.storage.local.set({ userAgent: userAgent === defaultUserAgent ? "" : userAgent });
+});
+
+resetButton.addEventListener("click", () => {
+  textarea.value = defaultUserAgent;
+  browser.storage.local.set({ userAgent: "" });
 });
 
 // Keep checkboxes in sync when toggled from the toolbar.
