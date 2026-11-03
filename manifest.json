@@ -5,7 +5,7 @@
   "description": "Sends a User-Agent header in the containers you choose. Toggle from the toolbar.",
   "browser_specific_settings": {
     "gecko": {
-      "id": "container-user-agent@oskarkook",
+      "id": "container-user-agent@maatriks",
       "data_collection_permissions": {
         "required": [
           "none"
